@@ -1,4 +1,4 @@
-#Miclat Consulting | Operations & Quality Engineering Strategy
+Operations & Quality Engineering Strategy
 
 Our main corporate capabilities portfolio is currently pending deployment. 
 For enterprise project inquiries, logistics advisory consulting, or contract partnership evaluations, please contact our director’s desk directly through your verified project channels or private message systems.
