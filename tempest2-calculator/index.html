@@ -203,7 +203,6 @@
             cursor: pointer;
         }
 
-        /* Six Sigma Component Styling */
         .metric-card {
             background: var(--bg-color);
             border: 1px solid var(--border-color);
@@ -254,7 +253,6 @@
         .data-table th { background-color: var(--bg-color); }
         .data-table tr:nth-child(even) { background-color: rgba(255,255,255,0.01); }
 
-        /* Mini Plot Styling */
         .chart-container {
             height: 120px;
             border: 1px solid var(--border-color);
@@ -298,9 +296,8 @@
     </header>
 
     <div class="grid-2">
-        <!-- LEFT: PARAMETER CONFIGURATION CONTROLS -->
+        <!-- LEFT PANEL -->
         <div>
-            <!-- SECTION 1: CORE THERMAL BATTERY -->
             <div class="card">
                 <div class="card-title">🧪 1. Core Thermal Battery & 60/40 Hybrid Balancer</div>
                 <label for="thermal-media">Select Active Thermal Media</label>
@@ -309,7 +306,7 @@
                     <option value="stainless">Stainless Steel – Heavy Conduction Ballast</option>
                     <option value="ruby">Ruby / Sapphire Array – High Velocity Dispersion</option>
                 </select>
-                <div class="description-box" id="media-desc">Loading parameters...</div>
+                <div class="description-box" id="media-desc">Initial initialization sequence loading...</div>
                 
                 <h4 style="margin: 20px 0 10px 0; font-size: 0.9rem; color: var(--text-muted)">CUSTOM WEIGHT RATIO (THE 60/40 KINETIC HACK)</h4>
                 <table class="ratio-table">
@@ -319,9 +316,12 @@
                 <div class="inline-status" id="bypass-status">✓ Status: Operational</div>
             </div>
 
-            <!-- SECTION 2: FLUID DYNAMICS -->
             <div class="card">
                 <div class="card-title">🌪️ 2. Fluid Dynamics & Airflow Configurator</div>
                 <div class="profile-switcher">
-                    <button class="profile-btn active" id="prof-1" onclick="setProfile(1)">PROFILE 1: CONDUCTION POWERHOUSE</button>
+                    <button class="profile-btn" id="prof-1" onclick="setProfile(1)">PROFILE 1: CONDUCTION POWERHOUSE</button>
                     <button class="profile-btn" id="prof-2" onclick="setProfile(2)">PROFILE 2: NATIVE MTL COOLER</button>
+                    <button class="profile-btn" id="prof-3" onclick="setProfile(3)">PROFILE 3: FLAVOR PURIST</button>
+                </div>
+
+                <div class="slider-group">
