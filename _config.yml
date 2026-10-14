@@ -3,3 +3,6 @@ theme: jekyll-theme-cayman
 description: " "
 github:
   is_project_page: false
+# The code below manually hides the footer text element from the page:
+kramdown:
+  input: GFM
