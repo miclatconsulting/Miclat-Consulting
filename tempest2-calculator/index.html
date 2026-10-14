@@ -62,10 +62,11 @@
             border: 1px solid rgba(0, 255, 136, 0.2);
         }
 
-        .grid-2 {
+        .grid-layout {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
+            margin-bottom: 25px;
         }
 
         .grid-3 {
@@ -75,7 +76,7 @@
         }
 
         @media (max-width: 900px) {
-            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            .grid-layout { grid-template-columns: 1fr; }
         }
 
         .card {
@@ -83,7 +84,8 @@
             border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 20px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
         }
 
         .card-title {
@@ -104,7 +106,7 @@
             letter-spacing: 0.5px;
         }
 
-        select, input[type="number"], input[type="text"] {
+        select, input[type="number"] {
             width: 100%;
             background-color: var(--bg-color);
             border: 1px solid var(--border-color);
@@ -124,11 +126,13 @@
             font-size: 0.9rem;
             line-height: 1.4;
             color: #b1bac4;
+            min-height: 60px;
         }
 
         .ratio-table {
             width: 100%;
             border-collapse: collapse;
+            margin-top: 10px;
         }
 
         .ratio-table td {
@@ -166,6 +170,7 @@
             font-weight: 600;
             font-size: 0.85rem;
             text-align: center;
+            outline: none;
         }
 
         .profile-btn.active {
@@ -295,20 +300,21 @@
         <div class="status-badge" id="global-dpmo-badge">✓ 0 DPMO Baseline Active</div>
     </header>
 
-    <div class="grid-2">
-        <!-- LEFT PANEL -->
+    <div class="grid-layout">
+        <!-- LEFT PANELS -->
         <div>
+            <!-- SECTION 1: CORE THERMAL BATTERY -->
             <div class="card">
-                <div class="card-title">🧪 1. Core Thermal Battery & 60/40 Hybrid Balancer</div>
+                <div class="card-title">🟢 1. Core Thermal Battery & 60/40 Hybrid Balancer</div>
                 <label for="thermal-media">Select Active Thermal Media</label>
                 <select id="thermal-media" onchange="handleMediaChange()">
                     <option value="zirconia">Zirconia – Prolonged Thermal Hold</option>
                     <option value="stainless">Stainless Steel – Heavy Conduction Ballast</option>
                     <option value="ruby">Ruby / Sapphire Array – High Velocity Dispersion</option>
                 </select>
-                <div class="description-box" id="media-desc">Initial initialization sequence loading...</div>
+                <div class="description-box" id="media-desc">System initializing...</div>
                 
-                <h4 style="margin: 20px 0 10px 0; font-size: 0.9rem; color: var(--text-muted)">CUSTOM WEIGHT RATIO (THE 60/40 KINETIC HACK)</h4>
+                <h4 style="margin: 20px 0 5px 0; font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Custom Weight Ratio (The 60/40 Kinetic Hack)</h4>
                 <table class="ratio-table">
                     <tr><td>Lower Base (Bottom 60%):</td><td class="val" id="base-ratio">-</td></tr>
                     <tr><td>Upper Capillary (Top 40%):</td><td class="val" id="upper-ratio">-</td></tr>
@@ -316,12 +322,8 @@
                 <div class="inline-status" id="bypass-status">✓ Status: Operational</div>
             </div>
 
+            <!-- SECTION 2: FLUID DYNAMICS -->
             <div class="card">
                 <div class="card-title">🌪️ 2. Fluid Dynamics & Airflow Configurator</div>
                 <div class="profile-switcher">
                     <button class="profile-btn" id="prof-1" onclick="setProfile(1)">PROFILE 1: CONDUCTION POWERHOUSE</button>
-                    <button class="profile-btn" id="prof-2" onclick="setProfile(2)">PROFILE 2: NATIVE MTL COOLER</button>
-                    <button class="profile-btn" id="prof-3" onclick="setProfile(3)">PROFILE 3: FLAVOR PURIST</button>
-                </div>
-
-                <div class="slider-group">
