@@ -128,7 +128,7 @@
                 <tr>
                     <td>
                         <label class="control-label">Select Active Thermal Media</label>
-                        <select id="matrix-select" onchange="runMatrixChangeAction()">
+                        <select id="matrix-select" onchange="updateAirflowLayout('matrix')">
                             <option value="ss">Stainless Steel (3mm + 2.5mm Mix) - Max Conduction</option>
                             <option value="sic">Silicon Carbide (SiC) - High-Velocity Fluidity</option>
                             <option value="shinju">Shinju Pearls - Smooth Vapor Integration</option>
@@ -185,4 +185,3 @@
             <h2>⏱️ 3. Real-Time Andon System & Equalization Pause</h2>
             <table class="layout-table">
                 <tr>
-                    <td style="width: 33.33%;">
