@@ -1,1 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miclat Consulting | Tempest 2 Optimization Suite</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: #0b0f19;
+            color: #f1f5f9;
+            font-family: monospace;
+            padding: 0 0 40px 0;
+        }
+        header {
+            background-color: #020617;
+            border-bottom: 2px solid #1e293b;
+            padding: 20px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        h1 { font-size: 1.2rem; color: #ffffff; font-weight: bold; }
+        .subtitle { font-size: 0.75rem; color: #34d399; margin-top: 5px; }
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .dashboard-card {
+            background-color: #020617;
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        h2 { font-size: 1.1rem; color: #ffffff; margin-bottom: 15px; border-bottom: 1px solid #1e293b; padding-bottom: 5px; }
+        .layout-table { width: 100%; border-collapse: collapse; margin-bottom: 10px; }
+        .layout-table td { width: 50%; vertical-align: top; padding: 10px; }
+        .control-label { display: block; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; color: #94a3b8; margin-bottom: 8px; }
+        
+        select, input {
+            width: 100%;
+            background-color: #0f172a;
+            border: 1px solid #334155;
+            color: #ffffff;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-family: monospace;
+            margin-bottom: 10px;
+            display: block;
+        }
+        select:focus, input:focus { outline: none; border-color: #10b981; }
+        
+        .description-box {
+            font-size: 0.8rem;
+            color: #cbd5e1;
+            background-color: #0f172a;
+            border: 1px dashed #334155;
+            padding: 12px;
+            border-radius: 4px;
+            line-height: 1.6;
+            min-height: 80px;
+            margin-bottom: 10px;
+        }
+        .data-panel-block { background-color: #0f172a; border: 1px solid #1e293b; border-radius: 4px; padding: 15px; width: 100%; }
+        .data-panel-row { display: flex; justify-content: space-between; margin-bottom: 8px; border-bottom: 1px solid #1e293b; padding-bottom: 8px; font-size: 0.8rem; }
+        .data-panel-row:last-child { margin-bottom: 0; border-bottom: none; padding-bottom: 0; }
+        
+        .profile-btn-row { display: flex; width: 100%; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+        .btn-tab-select {
+            flex: 1;
+            background-color: #0f172a;
+            border: 1px solid #334155;
+            padding: 12px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-radius: 4px;
+            min-width: 160px;
+            color: #94a3b8;
+        }
+        .btn-tab-select:hover { background-color: #1e293b; color: #ffffff; }
+        
+        .color-amber { color: #f59e0b; }
+        .color-cyan { color: #22d3ee; }
+        .color-emerald { color: #34d399; }
+        .color-rose { color: #f43f5e; }
+        
+        .fluid-bar-track { width: 100%; background-color: #1e293b; height: 10px; border-radius: 4px; overflow: hidden; margin-top: 5px; }
+        .fluid-bar-fill { height: 100%; background-color: #10b981; width: 100%; transition: width 0.3s ease; }
+        
+        .andon-box-wrapper { background-color: #0f172a; border: 1px solid #059669; padding: 15px; text-align: center; border-radius: 4px; box-shadow: 0 0 15px rgba(16,185,129,0.15); width: 100%; }
+        .andon-signal-text { font-size: 1.2rem; font-weight: 900; color: #10b981; margin-top: 5px; }
+        
+        .btn-launch { background-color: #059669; color: #ffffff; width: 100%; padding: 12px; font-weight: bold; cursor: pointer; border-radius: 4px; text-transform: uppercase; margin-bottom: 8px; border: none; }
+        .btn-launch:hover { background-color: #10b981; }
+        .btn-abort { background-color: #1e293b; color: #cbd5e1; border: 1px solid #334155; width: 100%; padding: 8px; cursor: pointer; border-radius: 4px; text-transform: uppercase; border: none; }
+        .btn-abort:hover { background-color: #334155; }
+    </style>
+</head>
+<body>
 
+    <header>
+        <div class="header-container">
+            <div>
+                <h1>⚡ MICLAT CONSULTING | TEMPEST 2 OPTIMIZATION</h1>
+                <div class="subtitle">Project ID: B0087355 | Lean Six Sigma Black Belt Suite</div>
+            </div>
+            <div>
+                <span style="background-color: #064e3b; color: #34d399; padding: 6px 12px; border-radius: 4px; font-size: 0.75rem; border: 1px solid #065f46; font-weight: bold; font-family: monospace;">✓ 0 DPMO Active</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        
+        <!-- SECTION 1 -->
+        <div class="dashboard-card">
+            <h2>🧪 1. Core Thermal Battery & 60/40 Hybrid Balancer</h2>
+            <table class="layout-table">
+                <tr>
+                    <td>
+                        <label class="control-label">Select Active Thermal Media</label>
+                        <select id="matrix-select" onchange="updateAirflowLayout('matrix')">
+                            <option value="ss">Stainless Steel (3mm + 2.5mm Mix) - Max Conduction</option>
+                            <option value="sic">Silicon Carbide (SiC) - High-Velocity Fluidity</option>
+                            <option value="shinju">Shinju Pearls - Smooth Vapor Integration</option>
+                            <option value="zirconia">Zirconia - Prolonged Thermal Hold</option>
+                            <option value="ruby">Sapphire / Rubies - Flavor Purist Profile</option>
+                        </select>
+                        <div id="matrix-desc" class="description-box">Stainless Steel (3mm + 2.5mm Mix): Absolute heaviest conduction setup. Maximizes thermal ballast mass and heat retention to deliver uniform One Hit Extraction (OHE) profiles.</div>
+                    </td>
+                    <td>
+                        <label class="control-label">Custom Weight Ratio (The 60/40 Kinetic Hack)</label>
+                        <div class="data-panel-block">
+                            <div class="data-panel-row"><span class="color-amber">Lower Base (Bottom 60%):</span><span style="font-weight:bold;">3mm Zirconia / SiC</span></div>
+                            <div class="data-panel-row"><span class="color-cyan">Upper Capillary (Top 40%):</span><span style="font-weight:bold;">2.5mm Ruby / Sapphire</span></div>
+                            <div class="color-emerald" style="margin-top: 10px; font-size: 0.75rem; font-weight: bold;">✓ Status: Fluid air bypass paths eliminated via gravity settle.</div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- SECTION 2 -->
+        <div class="dashboard-card">
+            <h2>🌪️ 2. Fluid Dynamics & Airflow Configurator</h2>
+            <div class="profile-btn-row">
+                <button type="button" onclick="updateAirflowLayout('conduction')" class="btn-tab-select color-amber">Profile 1: Conduction Powerhouse</button>
+                <button type="button" onclick="updateAirflowLayout('mtl')" class="btn-tab-select color-cyan">Profile 2: Native MTL Cooler</button>
+                <button type="button" onclick="updateAirflowLayout('flavor')" class="btn-tab-select color-emerald">Profile 3: Flavor Purist</button>
+            </div>
+            <table class="layout-table">
+                <tr>
+                    <td>
+                        <div class="metric-slider-box">
+                            <div style="display: flex; justify-content: space-between; font-size: 0.8rem;"><span>Cap Airflow Input:</span><span id="cap-val" style="font-weight:bold;">100% Open</span></div>
+                            <div class="fluid-bar-track"><div id="cap-bar" class="fluid-bar-fill" style="width: 100%; background-color:#10b981;"></div></div>
+                        </div>
+                        <div class="metric-slider-box">
+                            <div style="display: flex; justify-content: space-between; font-size: 0.8rem;"><span>Stem Airflow Choke (Bypass):</span><span id="stem-val" style="font-weight:bold;">0% (Fully Closed)</span></div>
+                            <div class="fluid-bar-track"><div id="stem-bar" class="fluid-bar-fill" style="width: 0%; background-color:#f59e0b;"></div></div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="data-panel-block" style="min-height: 105px;">
+                            <span style="color:#64748b; font-size:0.65rem; font-weight:bold; text-transform:uppercase;">Condenser Helix Layout</span>
+                            <div id="helix-setup" style="font-size:0.95rem; font-weight:bold; color:#fff; margin: 5px 0;">No Helix / Direct Core Path</div>
+                            <div class="color-emerald" style="font-size:0.75rem; font-weight:bold; margin-top:5px;">✓ Status: Internal oven vacuum pressure locked.</div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- SECTION 3 -->
+        <div class="dashboard-card">
