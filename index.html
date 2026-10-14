@@ -4,6 +4,182 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Miclat Consulting | Tempest 2 Optimization Suite</title>
+    <style>
+        /* Base Reset & Core Colors */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: #0f172a;
+            color: #e2e8f0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.5;
+            padding-bottom: 2rem;
+        }
+
+        /* Executive Top Header */
+        header {
+            background-color: #020617;
+            border-b: 1px solid #1e293b;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        h1 { font-size: 1.25rem; font-weight: 700; color: #ffffff; tracking-tight: -0.025em; }
+        .subtitle { font-size: 0.75rem; color: #34d399; font-family: monospace; margin-top: 0.1rem; }
+        .header-meta { display: flex; gap: 1rem; align-items: center; }
+        .badge { background-color: #1e293b; border: 1px solid #334155; padding: 0.25rem 0.5rem; font-size: 0.75rem; font-family: monospace; rounded: 4px; color: #cbd5e1; }
+        .status-active { background-color: #064e3b; border-color: #065f46; color: #34d399; font-weight: 700; font-size: 0.75rem; padding: 0.25rem 0.75rem; border-radius: 4px; font-family: monospace; }
+
+        /* Main Workspace Content Grid */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+        @media (max-width: 960px) {
+            main { grid-template-columns: 1fr; }
+        }
+
+        /* Standardized Form Factor Section Cards */
+        section {
+            background-color: #020617;
+            border: 1px solid #1e293b;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3);
+        }
+        h2 { font-size: 1rem; font-weight: 700; color: #ffffff; margin-bottom: 1.25rem; border-bottom: 1px solid #1e293b; padding-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+        label { display: block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; tracking-wider: 0.05em; color: #94a3b8; margin-bottom: 0.5rem; }
+
+        /* Selector Elements */
+        select, input {
+            width: 100%;
+            background-color: #0f172a;
+            border: 1px solid #334155;
+            color: #ffffff;
+            padding: 0.6rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            font-family: monospace;
+        }
+        select:focus, input:focus { outline: none; border-color: #10b981; }
+
+        /* Display Readouts & Info Blocks */
+        .desc-text { font-size: 0.75rem; color: #94a3b8; line-height: 1.6; font-style: italic; margin-top: -0.5rem; margin-bottom: 1rem; }
+        .data-panel { background-color: #0f172a; border: 1px solid #1e293b; border-radius: 6px; padding: 1rem; font-family: monospace; font-size: 0.75rem; margin-top: 0.5rem; }
+        .data-row { display: flex; justify-content: space-between; margin-bottom: 0.5rem; border-bottom: 1px solid #1e293b; padding-bottom: 0.5rem; }
+        .data-row:last-child { margin-bottom: 0; border-bottom: none; padding-bottom: 0; }
+        
+        /* Bar Metrics Group elements */
+        .metric-group { margin-bottom: 1.25rem; font-family: monospace; font-size: 0.75rem; }
+        .bar-container { width: 100%; background-color: #1e293b; h: 8px; height: 8px; border-radius: 4px; overflow: hidden; margin-top: 0.25rem; }
+        .bar-fill { height: 100%; transition: width 0.3s ease; }
+        .bg-emerald { background-color: #10b981; }
+        .bg-amber { background-color: #f59e0b; }
+
+        /* Workplace Andon Module & Timers */
+        .andon-box { background-color: #0f172a; padding: 1rem; border-radius: 8px; border: 1px solid #1e293b; text-center: center; text-align: center; transition: all 0.3s ease; }
+        .andon-glow-green { border-color: #059669; box-shadow: 0 0 15px rgba(16,185,129,0.2); }
+        .andon-glow-yellow { border-color: #d97706; box-shadow: 0 0 15px rgba(245,158,11,0.2); }
+        .andon-text { font-size: 1.25rem; font-weight: 900; font-family: monospace; tracking-wide: 0.05em; color: #10b981; margin-top: 0.25rem; }
+        
+        /* Button Configurations */
+        .btn-group { display: flex; flex-direction: column; gap: 0.75rem; }
+        button { cursor: pointer; border: none; font-family: monospace; font-weight: 700; border-radius: 6px; padding: 0.6rem 1rem; font-size: 0.75rem; tracking-wider: 0.05em; text-transform: uppercase; transition: background 0.2s; text-align: center; }
+        .btn-primary { background-color: #059669; color: #ffffff; }
+        .btn-primary:hover { background-color: #10b981; }
+        .btn-secondary { background-color: #1e293b; color: #cbd5e1; border: 1px solid #334155; }
+        .btn-secondary:hover { background-color: #334155; }
+        
+        .profile-btn-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; }
+        .btn-tab { background-color: #0f172a; border: 1px solid #334155; padding: 0.4rem 0.75rem; font-size: 0.7rem; color: #94a3b8; }
+        .btn-tab:hover { background-color: #1e293b; color: #ffffff; }
+
+        /* Typography Callouts */
+        .text-amber { color: #f59e0b; }
+        .text-cyan { color: #22d3ee; }
+        .text-emerald { color: #34d399; }
+        .text-rose { color: #f43f5e; }
+        .font-bold { font-weight: 700; }
+        .foot-note { font-size: 0.65rem; color: #64748b; font-family: sans-serif; line-height: 1.5; margin-top: 1rem; }
+    </style>
+</head>
+<body>
+
+    <!-- Top Executive Header -->
+    <header>
+        <div>
+            <h1>⚡ MICLAT CONSULTING | TEMPEST 2 OPTIMIZATION</h1>
+            <div class="subtitle">Project ID: B0087355 | Lean Six Sigma Black Belt Deployment</div>
+        </div>
+        <div class="header-meta">
+            <div class="badge">Lab Gateway: 23464</div>
+            <div class="status-active">✓ 0 DPMO Active</div>
+        </div>
+    </header>
+
+    <!-- Main Content Container Grid -->
+    <main>
+        
+        <!-- Left Side: Engineering Panels -->
+        <div>
+            <!-- CORES & MATRIX CONFIGURATOR -->
+            <section>
+                <h2>🧪 1. Core Thermal Battery & 60/40 Hybrid Balancer</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; flex-wrap: wrap;">
+                    <div>
+                        <label>Select Active Thermal Media</label>
+                        <select id="matrix-select" onchange="calculateMatrixMetrics()">
+                            <option value="ss">Stainless Steel (3mm + 2.5mm Mix) - Max Conduction Ballast</option>
+                            <option value="sic">Silicon Carbide (SiC) - High-Velocity Fluidity</option>
+                            <option value="shinju">Shinju Pearls - Smooth Vapor Integration</option>
+                            <option value="zirconia">Zirconia - Prolonged Thermal Hold</option>
+                            <option value="ruby">Sapphire / Rubies - Flavor Purist Profile</option>
+                        </select>
+                        <div id="matrix-desc" class="desc-text"></div>
+                    </div>
+                    <div>
+                        <label>Custom Weight Ratio (The 60/40 Kinetic Hack)</label>
+                        <div class="data-panel">
+                            <div class="data-row"><span class="text-amber">Lower Base (Bottom 60%):</span><span class="font-bold">3mm Zirconia / SiC Ballast</span></div>
+                            <div class="data-row"><span class="text-cyan">Upper Capillary (Top 40%):</span><span class="font-bold">2.5mm Ruby / Sapphire Convection</span></div>
+                            <div class="text-emerald" style="margin-top: 0.5rem; font-size: 0.65rem;">✓ Engineering Status: Air bypass paths eliminated via gravity-settle logic.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AIRFLOW PROFILE CONFIGURATOR -->
+            <section>
+                <h2>🌪️ 2. Fluid Dynamics & Airflow Configurator</h2>
+                <div class="profile-btn-row">
+                    <button onclick="setAirflowProfile('conduction')" class="btn-tab text-amber">Profile 1: Conduction Powerhouse</button>
+                    <button onclick="setAirflowProfile('mtl')" class="btn-tab text-cyan">Profile 2: Native MTL Cooler</button>
+                    <button onclick="setAirflowProfile('flavor')" class="btn-tab text-emerald">Profile 3: Flavor Purist</button>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                    <div>
+                        <div class="metric-group">
+                            <div style="display: flex; justify-content: space-between;"><span>Cap Airflow Input:</span><span id="cap-val" class="font-bold">100% Open</span></div>
+                            <div class="bar-container"><div id="cap-bar" class="bar-fill bg-emerald" style="width: 100%"></div></div>
+                        </div>
+                        <div class="metric-group">
+                            <div style="display: flex; justify-content: space-between;"><span>Stem Airflow Choke (Bypass):</span><span id="stem-val" class="font-bold">0% (Fully Closed)</span></div>
+                            <div class="bar-container"><div id="stem-bar" class="bar-fill bg-amber" style="width: 0%"></div></div>
+                        </div>
+                    </div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miclat Consulting | Tempest 2 Optimization Suite</title>
     <script src="https://tailwindcss.com"></script>
     <style>
         .andon-glow-green { box-shadow: 0 0 15px rgba(34, 197, 94, 0.6); }
