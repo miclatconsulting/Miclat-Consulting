@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Miclat Consulting | Tempest 2 Optimization Suite</title>
     <style>
-        /* Base Container & Body Resets */
+        /* Global Structural Core Elements */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             background-color: #0b0f19;
             color: #f1f5f9;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             line-height: 1.6;
-            padding-bottom: 3rem;
+            padding-bottom: 4rem;
         }
 
-        /* Top Executive Header Navigation */
+        /* Top Operations Command Header */
         header {
             background-color: #020617;
             border-bottom: 2px solid #1e293b;
@@ -33,7 +33,7 @@
         .lab-badge { background-color: #0f172a; border: 1px solid #334155; padding: 0.4rem 0.75rem; font-size: 0.75rem; font-family: monospace; border-radius: 6px; color: #cbd5e1; }
         .status-badge { background-color: #064e3b; border: 1px solid #065f46; color: #34d399; font-weight: 700; font-size: 0.75rem; padding: 0.4rem 0.75rem; border-radius: 6px; font-family: monospace; }
 
-        /* Main Structured Section Layout */
+        /* Split Workspace Content Columns */
         .workspace-wrapper {
             max-width: 1280px;
             margin: 2rem auto;
@@ -41,12 +41,13 @@
             display: grid;
             grid-template-columns: 2fr 1fr;
             gap: 2rem;
+            width: 100%;
         }
         @media (max-width: 1024px) {
             .workspace-wrapper { grid-template-columns: 1fr; }
         }
 
-        /* Panel Operations Cards */
+        /* Standardized Dashboard Section Blocks */
         .dashboard-card {
             background-color: #020617;
             border: 1px solid #1e293b;
@@ -59,11 +60,11 @@
         .dashboard-card h2 { font-size: 1.1rem; font-weight: 700; color: #ffffff; margin-bottom: 1.25rem; border-bottom: 2px solid #1e293b; padding-bottom: 0.6rem; display: flex; align-items: center; gap: 0.5rem; }
         .control-label { display: block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; tracking-wider: 0.05em; color: #94a3b8; margin-bottom: 0.6rem; }
 
-        /* Grid Framework Fixes inside Sections */
+        /* Internal Grid Aligners */
         .card-inner-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; width: 100%; }
-        @media (max-width: 640px) { .card-inner-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) { .card-inner-grid { grid-template-columns: 1fr; } }
 
-        /* Form Inputs & Interactive Select Elements */
+        /* Select Options & Text Inputs */
         select, input {
             width: 100%;
             background-color: #0f172a;
@@ -78,39 +79,39 @@
         }
         select:focus, input:focus { outline: none; border-color: #10b981; }
 
-        /* Readout Panels & Text Fields */
-        .description-box { font-size: 0.8rem; color: #94a3b8; line-height: 1.6; font-style: italic; margin-top: -0.5rem; margin-bottom: 1rem; min-height: 45px; }
+        /* Readout Text Boxes & Data Panels */
+        .description-box { font-size: 0.8rem; color: #cbd5e1; bg-color: #0f172a; background-color: #0f172a; border: 1px dashed #1e293b; padding: 0.75rem; border-radius: 6px; line-height: 1.6; font-style: italic; margin-bottom: 1rem; min-height: 70px; }
         .data-panel-block { background-color: #0f172a; border: 1px solid #1e293b; border-radius: 8px; padding: 1.25rem; font-family: monospace; font-size: 0.8rem; width: 100%; }
         .data-panel-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; border-bottom: 1px solid #1e293b; padding-bottom: 0.6rem; width: 100%; }
         .data-panel-row:last-child { margin-bottom: 0; border-bottom: none; padding-bottom: 0; }
         
-        /* Bar Metrics Group elements */
+        /* Interactive Metric Visual Bar Components */
         .metric-slider-box { margin-bottom: 1.5rem; font-family: monospace; font-size: 0.8rem; width: 100%; }
         .fluid-bar-track { width: 100%; background-color: #1e293b; height: 10px; border-radius: 6px; overflow: hidden; margin-top: 0.4rem; position: relative; }
-        .fluid-bar-fill { height: 100%; transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .fluid-bar-fill { height: 100%; transition: width 0.4s ease-in-out; width: 100%; }
         .fill-emerald { background-color: #10b981; }
         .fill-amber { background-color: #f59e0b; }
 
-        /* Workspace Andon Module & Timers */
+        /* Workplace Andon Matrix Alerts */
         .andon-box-wrapper { background-color: #0f172a; padding: 1.25rem; border-radius: 8px; border: 1px solid #1e293b; text-align: center; transition: all 0.3s ease; width: 100%; }
         .glow-active-green { border-color: #059669; box-shadow: 0 0 20px rgba(16, 185, 129, 0.25); }
         .glow-active-yellow { border-color: #d97706; box-shadow: 0 0 20px rgba(245, 158, 11, 0.25); }
         .andon-signal-text { font-size: 1.3rem; font-weight: 900; font-family: monospace; color: #10b981; margin-top: 0.4rem; tracking-wide: 0.05em; }
         
-        /* Tactical Control Interface Layouts */
+        /* Command Button Frameworks */
         .operational-btn-box { display: flex; flex-direction: column; gap: 0.75rem; width: 100%; }
         button { cursor: pointer; border: none; font-family: monospace; font-weight: 700; border-radius: 6px; padding: 0.75rem 1.25rem; font-size: 0.8rem; text-transform: uppercase; tracking-wider: 0.05em; transition: all 0.2s ease; text-align: center; width: 100%; display: block; }
         .btn-launch { background-color: #059669; color: #ffffff; }
-        .btn-launch:hover { background-color: #10b981; transform: translateY(-1px); }
+        .btn-launch:hover { background-color: #10b981; }
         .btn-abort { background-color: #1e293b; color: #cbd5e1; border: 1px solid #334155; }
         .btn-abort:hover { background-color: #334155; }
         
-        .tab-profile-row { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; width: 100%; flex-wrap: wrap; }
-        .tab-profile-row button { width: auto; flex: 1; min-width: 140px; }
-        .btn-tab-select { background-color: #0f172a; border: 1px solid #334155; color: #94a3b8; }
+        /* Profile Row Layout Realignment */
+        .tab-profile-wrapper { display: flex; flex-direction: row; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.5rem; width: 100%; justify-content: flex-start; }
+        .btn-tab-select { background-color: #0f172a; border: 1px solid #334155; color: #94a3b8; width: auto; flex: 1; min-width: 180px; }
         .btn-tab-select:hover { background-color: #1e293b; color: #ffffff; border-color: #475569; }
 
-        /* Universal Text Styling Utilities */
+        /* Typography & Utility Tokens */
         .color-amber { color: #f59e0b; }
         .color-cyan { color: #22d3ee; }
         .color-emerald { color: #34d399; }
@@ -121,7 +122,7 @@
 </head>
 <body>
 
-    <!-- Executive Top Header -->
+    <!-- Executive Header Banner -->
     <header>
         <div class="header-title-block">
             <h1>⚡ MICLAT CONSULTING | TEMPEST 2 OPTIMIZATION</h1>
@@ -133,25 +134,25 @@
         </div>
     </header>
 
-    <!-- Main Content Container Grid -->
+    <!-- Main Workspace Column Split -->
     <main class="workspace-wrapper">
         
-        <!-- Left Column: Primary Functional Controls -->
+        <!-- Left Side: Interactive Processing Panels -->
         <div>
-            <!-- CORES & MATRIX CONFIGURATOR -->
+            <!-- SECTION 1: CORE MODULE -->
             <div class="dashboard-card">
                 <h2>🧪 1. Core Thermal Battery & 60/40 Hybrid Balancer</h2>
                 <div class="card-inner-grid">
                     <div>
                         <label class="control-label">Select Active Thermal Media</label>
-                        <select id="matrix-select" onchange="runMatrixEngineUpdate()">
+                        <select id="matrix-select" onchange="executeMatrixUpdateAction()">
                             <option value="ss">Stainless Steel (3mm + 2.5mm Mix) - Max Conduction Ballast</option>
                             <option value="sic">Silicon Carbide (SiC) - High-Velocity Fluidity</option>
                             <option value="shinju">Shinju Pearls - Smooth Vapor Integration</option>
                             <option value="zirconia">Zirconia - Prolonged Thermal Hold</option>
                             <option value="ruby">Sapphire / Rubies - Flavor Purist Profile</option>
                         </select>
-                        <div id="matrix-desc" class="description-box"></div>
+                        <div id="matrix-desc" class="description-box">Stainless Steel (3mm + 2.5mm Mix): Absolute heaviest conduction setup. Maximizes thermal ballast mass and heat retention to deliver uniform One Hit Extraction (OHE) profiles.</div>
                     </div>
                     <div>
                         <label class="control-label">Custom Weight Ratio (The 60/40 Kinetic Hack)</label>
@@ -164,9 +165,7 @@
                 </div>
             </div>
 
-            <!-- AIRFLOW PROFILE CONFIGURATOR -->
+            <!-- SECTION 2: AIRFLOW MODULE -->
             <div class="dashboard-card">
                 <h2>🌪️ 2. Fluid Dynamics & Airflow Configurator</h2>
-                <div class="tab-profile-row">
-                    <button onclick="applyAirflowMatrixProfile('conduction')" class="btn-tab-select color-amber">Profile 1: Conduction Powerhouse</button>
-                    <button onclick="applyAirflowMatrixProfile('mtl')" class="btn-tab-select color-cyan">Profile 2: Native MTL Cooler</button>
+                <div class="tab-profile-wrapper">
