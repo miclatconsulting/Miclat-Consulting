@@ -10,7 +10,7 @@
             background-color: #0b0f19;
             color: #f1f5f9;
             font-family: monospace;
-            padding: 0 0 30px 0;
+            padding: 0 0 40px 0;
         }
         header {
             background-color: #020617;
@@ -26,7 +26,7 @@
             justify-content: space-between;
             align-items: center;
         }
-        h1 { font-size: 1.3rem; color: #ffffff; }
+        h1 { font-size: 1.2rem; color: #ffffff; font-weight: bold; }
         .subtitle { font-size: 0.75rem; color: #34d399; margin-top: 5px; }
         .main-container {
             max-width: 1200px;
@@ -39,6 +39,7 @@
             border-radius: 8px;
             padding: 20px;
             margin-bottom: 20px;
+            width: 100%;
         }
         h2 { font-size: 1.1rem; color: #ffffff; margin-bottom: 15px; border-bottom: 1px solid #1e293b; padding-bottom: 5px; }
         .layout-table { width: 100%; border-collapse: collapse; margin-bottom: 10px; }
@@ -49,12 +50,14 @@
             background-color: #0f172a;
             border: 1px solid #334155;
             color: #ffffff;
-            padding: 10px;
-            border-radius: 4px;
+            padding: 12px;
+            border-radius: 6px;
             font-size: 0.85rem;
             font-family: monospace;
             margin-bottom: 10px;
+            display: block;
         }
+        select:focus, input:focus { outline: none; border-color: #10b981; }
         .description-box {
             font-size: 0.8rem;
             color: #cbd5e1;
@@ -62,23 +65,25 @@
             border: 1px dashed #334155;
             padding: 12px;
             border-radius: 4px;
-            line-height: 1.5;
+            line-height: 1.6;
             min-height: 80px;
+            margin-bottom: 10px;
         }
-        .data-panel-block { background-color: #0f172a; border: 1px solid #1e293b; border-radius: 4px; padding: 15px; }
+        .data-panel-block { background-color: #0f172a; border: 1px solid #1e293b; border-radius: 4px; padding: 15px; width: 100%; }
         .data-panel-row { display: flex; justify-content: space-between; margin-bottom: 8px; border-bottom: 1px solid #1e293b; padding-bottom: 8px; font-size: 0.8rem; }
         .data-panel-row:last-child { margin-bottom: 0; border-bottom: none; padding-bottom: 0; }
-        .profile-btn-row { display: flex; width: 100%; gap: 10px; margin-bottom: 15px; }
+        .profile-btn-row { display: flex; width: 100%; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
         .btn-tab-select {
             flex: 1;
             background-color: #0f172a;
             border: 1px solid #334155;
-            padding: 10px;
+            padding: 12px;
             font-size: 0.75rem;
             cursor: pointer;
             text-transform: uppercase;
             font-weight: bold;
             border-radius: 4px;
+            min-width: 160px;
         }
         .color-amber { color: #f59e0b; }
         .color-cyan { color: #22d3ee; }
@@ -86,9 +91,9 @@
         .color-rose { color: #f43f5e; }
         .fluid-bar-track { width: 100%; background-color: #1e293b; height: 10px; border-radius: 4px; overflow: hidden; margin-top: 5px; }
         .fluid-bar-fill { height: 100%; background-color: #10b981; width: 100%; transition: width 0.3s ease; }
-        .andon-box-wrapper { background-color: #0f172a; border: 1px solid #059669; padding: 15px; text-align: center; border-radius: 4px; box-shadow: 0 0 15px rgba(16,185,129,0.15); }
+        .andon-box-wrapper { background-color: #0f172a; border: 1px solid #059669; padding: 15px; text-align: center; border-radius: 4px; box-shadow: 0 0 15px rgba(16,185,129,0.15); width: 100%; }
         .andon-signal-text { font-size: 1.2rem; font-weight: 900; color: #10b981; margin-top: 5px; }
-        .btn-launch { background-color: #059669; color: #ffffff; width: 100%; padding: 12px; font-weight: bold; cursor: pointer; border-radius: 4px; text-transform: uppercase; margin-bottom: 8px; }
+        .btn-launch { background-color: #059669; color: #ffffff; width: 100%; padding: 12px; font-weight: bold; cursor: pointer; border-radius: 4px; text-transform: uppercase; margin-bottom: 8px; border: none; }
         .btn-launch:hover { background-color: #10b981; }
         .btn-abort { background-color: #1e293b; color: #cbd5e1; border: 1px solid #334155; width: 100%; padding: 8px; cursor: pointer; border-radius: 4px; text-transform: uppercase; }
         .btn-abort:hover { background-color: #334155; }
@@ -102,8 +107,8 @@
                 <h1>⚡ MICLAT CONSULTING | TEMPEST 2 OPTIMIZATION</h1>
                 <div class="subtitle">Project ID: B0087355 | Lean Six Sigma Black Belt Suite</div>
             </div>
-            <div style="display: flex; gap: 10px;">
-                <span class="status-badge" style="background-color: #064e3b; color: #34d399; padding: 5px 10px; border-radius: 4px; font-size: 0.75rem; border: 1px solid #065f46;">✓ 0 DPMO Active</span>
+            <div>
+                <span style="background-color: #064e3b; color: #34d399; padding: 6px 12px; border-radius: 4px; font-size: 0.75rem; border: 1px solid #065f46; font-weight: bold; font-family: monospace;">✓ 0 DPMO Active</span>
             </div>
         </div>
     </header>
@@ -131,7 +136,7 @@
                         <div class="data-panel-block">
                             <div class="data-panel-row"><span class="color-amber">Lower Base (Bottom 60%):</span><span style="font-weight:bold;">3mm Zirconia / SiC</span></div>
                             <div class="data-panel-row"><span class="color-cyan">Upper Capillary (Top 40%):</span><span style="font-weight:bold;">2.5mm Ruby / Sapphire</span></div>
-                            <div class="color-emerald" style="margin-top: 10px; font-size: 0.7rem; font-weight: bold;">✓ Status: Fluid air bypass paths eliminated via gravity settle.</div>
+                            <div class="color-emerald" style="margin-top: 10px; font-size: 0.75rem; font-weight: bold;">✓ Status: Fluid air bypass paths eliminated via gravity settle.</div>
                         </div>
                     </td>
                 </tr>
@@ -150,19 +155,19 @@
                 <tr>
                     <td>
                         <div class="metric-slider-box">
-                            <div style="display: flex; justify-content: space-between;"><span>Cap Airflow Input:</span><span id="cap-val" style="font-weight:bold;">100% Open</span></div>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.8rem;"><span>Cap Airflow Input:</span><span id="cap-val" style="font-weight:bold;">100% Open</span></div>
                             <div class="fluid-bar-track"><div id="cap-bar" class="fluid-bar-fill" style="width: 100%; background-color:#10b981;"></div></div>
                         </div>
                         <div class="metric-slider-box">
-                            <div style="display: flex; justify-content: space-between;"><span>Stem Airflow Choke (Bypass):</span><span id="stem-val" style="font-weight:bold;">0% (Fully Closed)</span></div>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.8rem;"><span>Stem Airflow Choke (Bypass):</span><span id="stem-val" style="font-weight:bold;">0% (Fully Closed)</span></div>
                             <div class="fluid-bar-track"><div id="stem-bar" class="fluid-bar-fill" style="width: 0%; background-color:#f59e0b;"></div></div>
                         </div>
                     </td>
                     <td>
-                        <div class="data-panel-block" style="min-height: 110px;">
+                        <div class="data-panel-block" style="min-height: 105px;">
                             <span style="color:#64748b; font-size:0.65rem; font-weight:bold; text-transform:uppercase;">Condenser Helix Layout</span>
                             <div id="helix-setup" style="font-size:0.95rem; font-weight:bold; color:#fff; margin: 5px 0;">No Helix / Direct Core Path</div>
-                            <div class="color-emerald" style="font-size:0.7rem; font-weight:bold; margin-top:5px;">✓ Status: Internal oven vacuum pressure locked.</div>
+                            <div class="color-emerald" style="font-size:0.75rem; font-weight:bold; margin-top:5px;">✓ Status: Internal oven vacuum pressure locked.</div>
                         </div>
                     </td>
                 </tr>
@@ -175,7 +180,3 @@
             <table class="layout-table">
                 <tr>
                     <td style="width: 33.33%;">
-                        <div id="andon-display" class="andon-box-wrapper">
-                            <span style="color:#64748b; font-size:0.65rem; text-transform:uppercase; font-weight:bold;">Factory Andon Signal</span>
-                            <div id="andon-text" class="andon-signal-text">GREEN (PASS)</div>
-                        </div>
