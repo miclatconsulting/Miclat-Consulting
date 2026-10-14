@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Miclat Consulting | Tempest 2 Optimization</title>
+    <title>Miclat Consulting | Tempest 2 Optimization Suite</title>
     <style>
         :root {
             --bg-color: #0d1117;
@@ -13,6 +13,8 @@
             --text-muted: #8b949e;
             --border-color: #30363d;
             --highlight-blue: #58a6ff;
+            --warning-orange: #ff9900;
+            --alert-red: #ff4a4a;
         }
 
         body {
@@ -24,7 +26,7 @@
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
@@ -38,7 +40,7 @@
         }
 
         h1 {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             letter-spacing: 1px;
             margin: 0;
             font-weight: 700;
@@ -53,11 +55,27 @@
         .status-badge {
             background-color: rgba(0, 255, 136, 0.1);
             color: var(--accent-green);
-            padding: 4px 12px;
+            padding: 6px 14px;
             border-radius: 4px;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 600;
             border: 1px solid rgba(0, 255, 136, 0.2);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        @media (max-width: 900px) {
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
         }
 
         .card {
@@ -73,31 +91,20 @@
             font-weight: 600;
             margin-top: 0;
             margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        @media (max-width: 768px) {
-            .grid-2 { grid-template-columns: 1fr; }
+            border-bottom: 1px solid rgba(48, 54, 61, 0.5);
+            padding-bottom: 10px;
         }
 
         label {
             display: block;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
             margin-bottom: 8px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        select {
+        select, input[type="number"], input[type="text"] {
             width: 100%;
             background-color: var(--bg-color);
             border: 1px solid var(--border-color);
@@ -106,7 +113,7 @@
             border-radius: 6px;
             font-size: 0.95rem;
             outline: none;
-            cursor: pointer;
+            box-sizing: border-box;
         }
 
         .description-box {
@@ -140,9 +147,6 @@
             margin-top: 15px;
             font-size: 0.85rem;
             color: var(--accent-green);
-            display: flex;
-            align-items: center;
-            gap: 6px;
         }
 
         .profile-switcher {
@@ -162,30 +166,12 @@
             font-weight: 600;
             font-size: 0.85rem;
             text-align: center;
-            transition: all 0.2s ease;
-        }
-
-        .profile-btn:hover {
-            border-color: var(--text-muted);
-            color: var(--text-main);
         }
 
         .profile-btn.active {
-            border-color: #ff9900;
-            color: #ff9900;
+            border-color: var(--warning-orange);
+            color: var(--warning-orange);
             background-color: rgba(255, 153, 0, 0.05);
-        }
-
-        .profile-btn.active.cooler {
-            border-color: var(--highlight-blue);
-            color: var(--highlight-blue);
-            background-color: rgba(88, 166, 255, 0.05);
-        }
-
-        .profile-btn.active.purist {
-            border-color: var(--accent-green);
-            color: var(--accent-green);
-            background-color: rgba(0, 255, 136, 0.05);
         }
 
         .slider-group {
@@ -197,10 +183,6 @@
             justify-content: space-between;
             font-size: 0.9rem;
             margin-bottom: 8px;
-        }
-
-        .slider-header .val {
-            font-weight: 600;
         }
 
         input[type="range"] {
@@ -219,11 +201,88 @@
             border-radius: 50%;
             background: var(--accent-green);
             cursor: pointer;
-            transition: transform 0.1s;
         }
 
-        input[type="range"]::-webkit-slider-thumb:hover {
-            transform: scale(1.2);
+        /* Six Sigma Component Styling */
+        .metric-card {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .metric-val {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            margin-top: 5px;
+        }
+
+        .btn-action {
+            background: var(--highlight-blue);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+
+        .btn-action:hover { background: #4092ee; }
+        .btn-danger { background: var(--alert-red); }
+        .btn-danger:hover { background: #e03b3b; }
+
+        .data-table-container {
+            overflow-x: auto;
+            margin-top: 15px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        .data-table th, .data-table td {
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            text-align: left;
+        }
+
+        .data-table th { background-color: var(--bg-color); }
+        .data-table tr:nth-child(even) { background-color: rgba(255,255,255,0.01); }
+
+        /* Mini Plot Styling */
+        .chart-container {
+            height: 120px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-color);
+            margin-top: 15px;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            padding: 0 10px;
+            gap: 8px;
+        }
+
+        .chart-bar {
+            flex: 1;
+            background: var(--highlight-blue);
+            min-height: 5px;
+            position: relative;
+            transition: height 0.3s ease;
+        }
+
+        .chart-bar::after {
+            content: attr(data-label);
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            color: var(--text-main);
         }
     </style>
 </head>
@@ -232,88 +291,37 @@
 <div class="container">
     <header>
         <div>
-            <h1>⚡ MICLAT CONSULTING | TEMPEST 2 OPTIMIZATION</h1>
-            <div class="project-id">Project ID: B0087355 | Lean Six Sigma Black Belt Suite</div>
+            <h1>⚡ MICLAT CONSULTING | TEMPEST 2 OPTIMIZATION SUITE</h1>
+            <div class="project-id">Project ID: B0087355 | Lean Six Sigma Black Belt Enterprise Package</div>
         </div>
-        <div class="status-badge">✓ 0 DPMO Active</div>
+        <div class="status-badge" id="global-dpmo-badge">✓ 0 DPMO Baseline Active</div>
     </header>
 
-    <!-- SECTION 1: CORE THERMAL BATTERY -->
-    <div class="card">
-        <div class="card-title">🟢 1. Core Thermal Battery & 60/40 Hybrid Balancer</div>
-        <div class="grid-2">
-            <div>
+    <div class="grid-2">
+        <!-- LEFT: PARAMETER CONFIGURATION CONTROLS -->
+        <div>
+            <!-- SECTION 1: CORE THERMAL BATTERY -->
+            <div class="card">
+                <div class="card-title">🧪 1. Core Thermal Battery & 60/40 Hybrid Balancer</div>
                 <label for="thermal-media">Select Active Thermal Media</label>
-                <select id="thermal-media">
+                <select id="thermal-media" onchange="handleMediaChange()">
                     <option value="zirconia">Zirconia – Prolonged Thermal Hold</option>
                     <option value="stainless">Stainless Steel – Heavy Conduction Ballast</option>
                     <option value="ruby">Ruby / Sapphire Array – High Velocity Dispersion</option>
                 </select>
-                <div class="description-box" id="media-desc">
-                    Zirconia setup. Maximizes heat retention profiles for extended extraction cycles without losing core core energy.
-                </div>
-            </div>
-            <div>
-                <label>Custom Weight Ratio (The 60/40 Kinetic Hack)</label>
+                <div class="description-box" id="media-desc">Loading parameters...</div>
+                
+                <h4 style="margin: 20px 0 10px 0; font-size: 0.9rem; color: var(--text-muted)">CUSTOM WEIGHT RATIO (THE 60/40 KINETIC HACK)</h4>
                 <table class="ratio-table">
-                    <tr>
-                        <td>Lower Base (Bottom 60%):</td>
-                        <td class="val" id="base-ratio">3mm Zirconia / SiC</td>
-                    </tr>
-                    <tr>
-                        <td>Upper Capillary (Top 40%):</td>
-                        <td class="val" id="upper-ratio">2.5mm Ruby / Sapphire</td>
-                    </tr>
+                    <tr><td>Lower Base (Bottom 60%):</td><td class="val" id="base-ratio">-</td></tr>
+                    <tr><td>Upper Capillary (Top 40%):</td><td class="val" id="upper-ratio">-</td></tr>
                 </table>
-                <div class="inline-status" id="bypass-status">
-                    ✓ Status: Fluid air bypass paths eliminated via gravity settle.
-                </div>
+                <div class="inline-status" id="bypass-status">✓ Status: Operational</div>
             </div>
-        </div>
-    </div>
 
-    <!-- SECTION 2: FLUID DYNAMICS -->
-    <div class="card">
-        <div class="card-title">🌪️ 2. Fluid Dynamics & Airflow Configurator</div>
-        
-        <div class="profile-switcher">
-            <button class="profile-btn active" id="prof-1" onclick="setProfile(1)">PROFILE 1: CONDUCTION POWERHOUSE</button>
-            <button class="profile-btn" id="prof-2" onclick="setProfile(2)">PROFILE 2: NATIVE MTL COOLER</button>
-            <button class="profile-btn" id="prof-3" onclick="setProfile(3)">PROFILE 3: FLAVOR PURIST</button>
-        </div>
-
-        <div class="grid-2">
-            <div>
-                <div class="slider-group">
-                    <div class="slider-header">
-                        <span>Cap Airflow Input:</span>
-                        <span class="val" id="cap-val">100% Open</span>
-                    </div>
-                    <input type="range" id="cap-range" min="0" max="100" value="100" oninput="updateSliders()">
-                </div>
-
-                <div class="slider-group">
-                    <div class="slider-header">
-                        <span>Stem Airflow Choke (Bypass):</span>
-                        <span class="val" id="stem-val">0% (Fully Closed)</span>
-                    </div>
-                    <input type="range" id="stem-range" min="0" max="100" value="0" oninput="updateSliders()">
-                </div>
-            </div>
-            <div>
-                <label>Condenser Helix Layout</label>
-                <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 10px;" id="helix-layout">
-                    No Helix / Direct Core Path
-                </div>
-                <div class="inline-status" style="color: var(--highlight-blue);" id="lock-status">
-                    ✓ Status: Internal oven vacuum pressure locked.
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    // System Blueprints Matrix
-    const profiles = {
-        1: {
+            <!-- SECTION 2: FLUID DYNAMICS -->
+            <div class="card">
+                <div class="card-title">🌪️ 2. Fluid Dynamics & Airflow Configurator</div>
+                <div class="profile-switcher">
+                    <button class="profile-btn active" id="prof-1" onclick="setProfile(1)">PROFILE 1: CONDUCTION POWERHOUSE</button>
+                    <button class="profile-btn" id="prof-2" onclick="setProfile(2)">PROFILE 2: NATIVE MTL COOLER</button>
