@@ -5,167 +5,177 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Miclat Consulting | Tempest 2 Optimization Suite</title>
     <style>
-        /* Global Structural Core Elements */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             background-color: #0b0f19;
             color: #f1f5f9;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            line-height: 1.6;
-            padding-bottom: 4rem;
+            font-family: monospace;
+            padding: 0 0 30px 0;
         }
-
-        /* Top Operations Command Header */
         header {
             background-color: #020617;
             border-bottom: 2px solid #1e293b;
-            padding: 1.5rem 2rem;
+            padding: 20px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            width: 100%;
         }
-        .header-title-block h1 { font-size: 1.4rem; font-weight: 800; color: #ffffff; letter-spacing: -0.025em; }
-        .header-title-block p { font-size: 0.75rem; color: #34d399; font-family: monospace; margin-top: 0.2rem; }
-        .header-meta-block { display: flex; gap: 1rem; align-items: center; }
-        .lab-badge { background-color: #0f172a; border: 1px solid #334155; padding: 0.4rem 0.75rem; font-size: 0.75rem; font-family: monospace; border-radius: 6px; color: #cbd5e1; }
-        .status-badge { background-color: #064e3b; border: 1px solid #065f46; color: #34d399; font-weight: 700; font-size: 0.75rem; padding: 0.4rem 0.75rem; border-radius: 6px; font-family: monospace; }
-
-        /* Split Workspace Content Columns */
-        .workspace-wrapper {
-            max-width: 1280px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 2rem;
-            width: 100%;
+        h1 { font-size: 1.3rem; color: #ffffff; }
+        .subtitle { font-size: 0.75rem; color: #34d399; margin-top: 5px; }
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-        @media (max-width: 1024px) {
-            .workspace-wrapper { grid-template-columns: 1fr; }
-        }
-
-        /* Standardized Dashboard Section Blocks */
         .dashboard-card {
             background-color: #020617;
             border: 1px solid #1e293b;
-            border-radius: 12px;
-            padding: 1.75rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            width: 100%;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
         }
-        .dashboard-card h2 { font-size: 1.1rem; font-weight: 700; color: #ffffff; margin-bottom: 1.25rem; border-bottom: 2px solid #1e293b; padding-bottom: 0.6rem; display: flex; align-items: center; gap: 0.5rem; }
-        .control-label { display: block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; tracking-wider: 0.05em; color: #94a3b8; margin-bottom: 0.6rem; }
-
-        /* Internal Grid Aligners */
-        .card-inner-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; width: 100%; }
-        @media (max-width: 768px) { .card-inner-grid { grid-template-columns: 1fr; } }
-
-        /* Select Options & Text Inputs */
+        h2 { font-size: 1.1rem; color: #ffffff; margin-bottom: 15px; border-bottom: 1px solid #1e293b; padding-bottom: 5px; }
+        .layout-table { width: 100%; border-collapse: collapse; margin-bottom: 10px; }
+        .layout-table td { width: 50%; vertical-align: top; padding: 10px; }
+        .control-label { display: block; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; color: #94a3b8; margin-bottom: 8px; }
         select, input {
             width: 100%;
             background-color: #0f172a;
             border: 1px solid #334155;
             color: #ffffff;
-            padding: 0.75rem;
-            border-radius: 6px;
+            padding: 10px;
+            border-radius: 4px;
             font-size: 0.85rem;
-            margin-bottom: 1rem;
             font-family: monospace;
-            display: block;
+            margin-bottom: 10px;
         }
-        select:focus, input:focus { outline: none; border-color: #10b981; }
-
-        /* Readout Text Boxes & Data Panels */
-        .description-box { font-size: 0.8rem; color: #cbd5e1; bg-color: #0f172a; background-color: #0f172a; border: 1px dashed #1e293b; padding: 0.75rem; border-radius: 6px; line-height: 1.6; font-style: italic; margin-bottom: 1rem; min-height: 70px; }
-        .data-panel-block { background-color: #0f172a; border: 1px solid #1e293b; border-radius: 8px; padding: 1.25rem; font-family: monospace; font-size: 0.8rem; width: 100%; }
-        .data-panel-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; border-bottom: 1px solid #1e293b; padding-bottom: 0.6rem; width: 100%; }
+        .description-box {
+            font-size: 0.8rem;
+            color: #cbd5e1;
+            background-color: #0f172a;
+            border: 1px dashed #334155;
+            padding: 12px;
+            border-radius: 4px;
+            line-height: 1.5;
+            min-height: 80px;
+        }
+        .data-panel-block { background-color: #0f172a; border: 1px solid #1e293b; border-radius: 4px; padding: 15px; }
+        .data-panel-row { display: flex; justify-content: space-between; margin-bottom: 8px; border-bottom: 1px solid #1e293b; padding-bottom: 8px; font-size: 0.8rem; }
         .data-panel-row:last-child { margin-bottom: 0; border-bottom: none; padding-bottom: 0; }
-        
-        /* Interactive Metric Visual Bar Components */
-        .metric-slider-box { margin-bottom: 1.5rem; font-family: monospace; font-size: 0.8rem; width: 100%; }
-        .fluid-bar-track { width: 100%; background-color: #1e293b; height: 10px; border-radius: 6px; overflow: hidden; margin-top: 0.4rem; position: relative; }
-        .fluid-bar-fill { height: 100%; transition: width 0.4s ease-in-out; width: 100%; }
-        .fill-emerald { background-color: #10b981; }
-        .fill-amber { background-color: #f59e0b; }
-
-        /* Workplace Andon Matrix Alerts */
-        .andon-box-wrapper { background-color: #0f172a; padding: 1.25rem; border-radius: 8px; border: 1px solid #1e293b; text-align: center; transition: all 0.3s ease; width: 100%; }
-        .glow-active-green { border-color: #059669; box-shadow: 0 0 20px rgba(16, 185, 129, 0.25); }
-        .glow-active-yellow { border-color: #d97706; box-shadow: 0 0 20px rgba(245, 158, 11, 0.25); }
-        .andon-signal-text { font-size: 1.3rem; font-weight: 900; font-family: monospace; color: #10b981; margin-top: 0.4rem; tracking-wide: 0.05em; }
-        
-        /* Command Button Frameworks */
-        .operational-btn-box { display: flex; flex-direction: column; gap: 0.75rem; width: 100%; }
-        button { cursor: pointer; border: none; font-family: monospace; font-weight: 700; border-radius: 6px; padding: 0.75rem 1.25rem; font-size: 0.8rem; text-transform: uppercase; tracking-wider: 0.05em; transition: all 0.2s ease; text-align: center; width: 100%; display: block; }
-        .btn-launch { background-color: #059669; color: #ffffff; }
-        .btn-launch:hover { background-color: #10b981; }
-        .btn-abort { background-color: #1e293b; color: #cbd5e1; border: 1px solid #334155; }
-        .btn-abort:hover { background-color: #334155; }
-        
-        /* Profile Row Layout Realignment */
-        .tab-profile-wrapper { display: flex; flex-direction: row; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.5rem; width: 100%; justify-content: flex-start; }
-        .btn-tab-select { background-color: #0f172a; border: 1px solid #334155; color: #94a3b8; width: auto; flex: 1; min-width: 180px; }
-        .btn-tab-select:hover { background-color: #1e293b; color: #ffffff; border-color: #475569; }
-
-        /* Typography & Utility Tokens */
+        .profile-btn-row { display: flex; width: 100%; gap: 10px; margin-bottom: 15px; }
+        .btn-tab-select {
+            flex: 1;
+            background-color: #0f172a;
+            border: 1px solid #334155;
+            padding: 10px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-radius: 4px;
+        }
         .color-amber { color: #f59e0b; }
         .color-cyan { color: #22d3ee; }
         .color-emerald { color: #34d399; }
         .color-rose { color: #f43f5e; }
-        .weight-black { font-weight: 800; }
-        .legal-disclaimer-text { font-size: 0.7rem; color: #475569; font-family: sans-serif; line-height: 1.5; margin-top: 1.25rem; border-top: 1px dashed #1e293b; padding-top: 1rem; }
+        .fluid-bar-track { width: 100%; background-color: #1e293b; height: 10px; border-radius: 4px; overflow: hidden; margin-top: 5px; }
+        .fluid-bar-fill { height: 100%; background-color: #10b981; width: 100%; transition: width 0.3s ease; }
+        .andon-box-wrapper { background-color: #0f172a; border: 1px solid #059669; padding: 15px; text-align: center; border-radius: 4px; box-shadow: 0 0 15px rgba(16,185,129,0.15); }
+        .andon-signal-text { font-size: 1.2rem; font-weight: 900; color: #10b981; margin-top: 5px; }
+        .btn-launch { background-color: #059669; color: #ffffff; width: 100%; padding: 12px; font-weight: bold; cursor: pointer; border-radius: 4px; text-transform: uppercase; margin-bottom: 8px; }
+        .btn-launch:hover { background-color: #10b981; }
+        .btn-abort { background-color: #1e293b; color: #cbd5e1; border: 1px solid #334155; width: 100%; padding: 8px; cursor: pointer; border-radius: 4px; text-transform: uppercase; }
+        .btn-abort:hover { background-color: #334155; }
     </style>
 </head>
 <body>
 
-    <!-- Executive Header Banner -->
     <header>
-        <div class="header-title-block">
-            <h1>⚡ MICLAT CONSULTING | TEMPEST 2 OPTIMIZATION</h1>
-            <p>Project ID: B0087355 | Lean Six Sigma Black Belt Deployment</p>
-        </div>
-        <div class="header-meta-block">
-            <div class="lab-badge">Lab Gateway: 23464</div>
-            <div class="status-badge">✓ 0 DPMO Active</div>
+        <div class="header-container">
+            <div>
+                <h1>⚡ MICLAT CONSULTING | TEMPEST 2 OPTIMIZATION</h1>
+                <div class="subtitle">Project ID: B0087355 | Lean Six Sigma Black Belt Suite</div>
+            </div>
+            <div style="display: flex; gap: 10px;">
+                <span class="status-badge" style="background-color: #064e3b; color: #34d399; padding: 5px 10px; border-radius: 4px; font-size: 0.75rem; border: 1px solid #065f46;">✓ 0 DPMO Active</span>
+            </div>
         </div>
     </header>
 
-    <!-- Main Workspace Column Split -->
-    <main class="workspace-wrapper">
+    <main class="main-container">
         
-        <!-- Left Side: Interactive Processing Panels -->
-        <div>
-            <!-- SECTION 1: CORE MODULE -->
-            <div class="dashboard-card">
-                <h2>🧪 1. Core Thermal Battery & 60/40 Hybrid Balancer</h2>
-                <div class="card-inner-grid">
-                    <div>
+        <!-- SECTION 1 -->
+        <div class="dashboard-card">
+            <h2>🧪 1. Core Thermal Battery & 60/40 Hybrid Balancer</h2>
+            <table class="layout-table">
+                <tr>
+                    <td>
                         <label class="control-label">Select Active Thermal Media</label>
-                        <select id="matrix-select" onchange="executeMatrixUpdateAction()">
-                            <option value="ss">Stainless Steel (3mm + 2.5mm Mix) - Max Conduction Ballast</option>
+                        <select id="matrix-select" onchange="runMatrixChangeAction()">
+                            <option value="ss">Stainless Steel (3mm + 2.5mm Mix) - Max Conduction</option>
                             <option value="sic">Silicon Carbide (SiC) - High-Velocity Fluidity</option>
                             <option value="shinju">Shinju Pearls - Smooth Vapor Integration</option>
                             <option value="zirconia">Zirconia - Prolonged Thermal Hold</option>
                             <option value="ruby">Sapphire / Rubies - Flavor Purist Profile</option>
                         </select>
                         <div id="matrix-desc" class="description-box">Stainless Steel (3mm + 2.5mm Mix): Absolute heaviest conduction setup. Maximizes thermal ballast mass and heat retention to deliver uniform One Hit Extraction (OHE) profiles.</div>
-                    </div>
-                    <div>
+                    </td>
+                    <td>
                         <label class="control-label">Custom Weight Ratio (The 60/40 Kinetic Hack)</label>
                         <div class="data-panel-block">
-                            <div class="data-panel-row"><span class="color-amber">Lower Base (Bottom 60%):</span><span class="weight-black">3mm Zirconia / SiC Ballast</span></div>
-                            <div class="data-panel-row"><span class="color-cyan">Upper Capillary (Top 40%):</span><span class="weight-black">2.5mm Ruby / Sapphire Convection</span></div>
-                            <div class="color-emerald" style="margin-top: 0.6rem; font-size: 0.7rem; font-weight: 700;">✓ Engineering Status: Air bypass paths eliminated via gravity-settle logic.</div>
+                            <div class="data-panel-row"><span class="color-amber">Lower Base (Bottom 60%):</span><span style="font-weight:bold;">3mm Zirconia / SiC</span></div>
+                            <div class="data-panel-row"><span class="color-cyan">Upper Capillary (Top 40%):</span><span style="font-weight:bold;">2.5mm Ruby / Sapphire</span></div>
+                            <div class="color-emerald" style="margin-top: 10px; font-size: 0.7rem; font-weight: bold;">✓ Status: Fluid air bypass paths eliminated via gravity settle.</div>
                         </div>
-                    </div>
-                </div>
-            </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
 
-            <!-- SECTION 2: AIRFLOW MODULE -->
-            <div class="dashboard-card">
-                <h2>🌪️ 2. Fluid Dynamics & Airflow Configurator</h2>
-                <div class="tab-profile-wrapper">
+        <!-- SECTION 2 -->
+        <div class="dashboard-card">
+            <h2>🌪️ 2. Fluid Dynamics & Airflow Configurator</h2>
+            <div class="profile-btn-row">
+                <button type="button" onclick="updateAirflowLayout('conduction')" class="btn-tab-select color-amber">Profile 1: Conduction Powerhouse</button>
+                <button type="button" onclick="updateAirflowLayout('mtl')" class="btn-tab-select color-cyan">Profile 2: Native MTL Cooler</button>
+                <button type="button" onclick="updateAirflowLayout('flavor')" class="btn-tab-select color-emerald">Profile 3: Flavor Purist</button>
+            </div>
+            <table class="layout-table">
+                <tr>
+                    <td>
+                        <div class="metric-slider-box">
+                            <div style="display: flex; justify-content: space-between;"><span>Cap Airflow Input:</span><span id="cap-val" style="font-weight:bold;">100% Open</span></div>
+                            <div class="fluid-bar-track"><div id="cap-bar" class="fluid-bar-fill" style="width: 100%; background-color:#10b981;"></div></div>
+                        </div>
+                        <div class="metric-slider-box">
+                            <div style="display: flex; justify-content: space-between;"><span>Stem Airflow Choke (Bypass):</span><span id="stem-val" style="font-weight:bold;">0% (Fully Closed)</span></div>
+                            <div class="fluid-bar-track"><div id="stem-bar" class="fluid-bar-fill" style="width: 0%; background-color:#f59e0b;"></div></div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="data-panel-block" style="min-height: 110px;">
+                            <span style="color:#64748b; font-size:0.65rem; font-weight:bold; text-transform:uppercase;">Condenser Helix Layout</span>
+                            <div id="helix-setup" style="font-size:0.95rem; font-weight:bold; color:#fff; margin: 5px 0;">No Helix / Direct Core Path</div>
+                            <div class="color-emerald" style="font-size:0.7rem; font-weight:bold; margin-top:5px;">✓ Status: Internal oven vacuum pressure locked.</div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- SECTION 3 -->
+        <div class="dashboard-card">
+            <h2>⏱️ 3. Real-Time Andon System & Equalization Pause</h2>
+            <table class="layout-table">
+                <tr>
+                    <td style="width: 33.33%;">
+                        <div id="andon-display" class="andon-box-wrapper">
+                            <span style="color:#64748b; font-size:0.65rem; text-transform:uppercase; font-weight:bold;">Factory Andon Signal</span>
+                            <div id="andon-text" class="andon-signal-text">GREEN (PASS)</div>
+                        </div>
