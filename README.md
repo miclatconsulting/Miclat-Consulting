@@ -1,4 +1,4 @@
-Quality Excellence 
+Quality Excellence Strategies 
 
 Our main capabilities portfolio is currently pending deployment. 
 For enterprise project inquiries, logistics advisory consulting, or contract partnership evaluations, please contact our director directly through your verified project channels or private message systems.
